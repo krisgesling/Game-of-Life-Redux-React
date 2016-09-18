@@ -1,0 +1,28 @@
+// NEXT STEPS
+/ Give each tile life!!!
+/ run reducer on every tile
+/ get interface updating from state
+- repeat for x number of 'turns'
+- add turn counter
+- allow start and stop of game
+-- should the state of the game be in state? Play, pause,
+
+
+// BUG FIXES
+- rewrite life checking to check life of each tile once and increment each neighbour of an alive tile.
+-- potentially do more grunt work at the start while it loads to make future operations quicker.
+-- consider calculating next turn at conclusion of last turn, so that calculations are done whilst the last turn is rendering.
+- Fix stretched squares in last row and col
+- Fix CSS bollocks
+- Clean up random number generater in GameBoard.js
+- Remove all Reduxtagram crap
+
+
+// STRETCH FUNCTIONS
+- Choose number of turns the game will run for.
+- calculate starting dimensions based on screen size.
+
+
+// LEARNINGS
+- good functional coding techniques, encouraging the separation of code into the most fundamental blocks possible.
+- Real consideration of the collective impact of each micro operation. Changing the way we check for life can reduce the computations by at least half, and the cost of different types of computation start to become very important.
