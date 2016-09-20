@@ -3,7 +3,7 @@
 / run reducer on every tile
 / get interface updating from state
 - repeat for x number of 'turns'
-- add turn counter
+/ add turn counter
 - allow start and stop of game
 -- should the state of the game be in state? Play, pause,
 

@@ -34,8 +34,12 @@ export function gameTurn(tiles, lives) {
     lives
   }
 }
-// Tile born
 
-// Tile lives
-
-// Tile dies
+// Btn handling for game control
+export function gameControl(props, btn) {
+  return {
+    type: 'GAME_CONTROL',
+    props,
+    btn
+  }
+}

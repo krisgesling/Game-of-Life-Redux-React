@@ -1,5 +1,22 @@
 function gameTurn(state = [], action) {
   switch(action.type) {
+
+    case 'GAME_CONTROL':
+      var control = function() {
+        console.log(action.btn);
+        switch (action.btn) {
+          case 'play':
+            let play = setTimeout(action.gameTurn.bind(null, action.tiles, action.lives), 1000);
+          case 'pause':
+            clearTimeout(play);
+            return state;
+          default:
+            return state;
+        }
+        return state;
+      }
+      break;
+
     case 'GAME_TURN':
       var findNeighbours = function() {
       // Maps all tiles on board and counts number of alive neighbours

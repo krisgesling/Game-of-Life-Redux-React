@@ -13,16 +13,30 @@ const ControlPanel = React.createClass({
         break;
     }
   },
-  clickPlay() {
-      const gameTurn = this.props.gameTurn.bind(null, this.props.tiles);
-      let play = setInterval(gameTurn, 1000);
-    return play;
+  clickPlay(action) {
+    var ctrlFn = function() {
+      // console showing props undefined, play variable referring to wrong this.
+      // need to pass this of parent through or bind the Fn to the right call location.
+      console.log('ctrlFn');
+      if (action == 'play') {
+        console.log('action: play');
+
+        let play = setInterval(() => {
+          this.props.gameTurn(this.props.tiles, this.props.lives)
+        }, 1000);
+      } else if ( action == 'pause' ) {
+        console.log('action: pause');
+        clearInterval(play);
+      }
+    }
+    var self = ctrlFn.call(this);
+    return self;
   },
   render() {
     return (
       <div className="control-panel">
-        <button className="take-turn" onClick={this.clickHandler.bind(this, 'play')}>Play</button>
-        <button className="take-turn" onClick={this.clickHandler.bind(this, 'pause')}>Pause</button>
+        <button className="take-turn" onClick={this.clickPlay.bind(this, 'play')}>Play</button>
+        <button className="take-turn" onClick={this.clickPlay.bind(this, 'pause')}>Pause</button>
         <button>{this.props.lives.turns}</button>
       </div>
     )
