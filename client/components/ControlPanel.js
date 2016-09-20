@@ -20,7 +20,6 @@ const ControlPanel = React.createClass({
       console.log('ctrlFn');
       if (action == 'play') {
         console.log('action: play');
-
         let play = setInterval(() => {
           this.props.gameTurn(this.props.tiles, this.props.lives)
         }, 1000);

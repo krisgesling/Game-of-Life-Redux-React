@@ -2,7 +2,7 @@
 / Give each tile life!!!
 / run reducer on every tile
 / get interface updating from state
-- repeat for x number of 'turns'
+/ repeat for x number of 'turns' - setInterval
 / add turn counter
 - allow start and stop of game
 -- should the state of the game be in state? Play, pause,
@@ -21,6 +21,7 @@
 // STRETCH FUNCTIONS
 - Choose number of turns the game will run for.
 - calculate starting dimensions based on screen size.
+- user can toggle life of individual tiles
 
 
 // LEARNINGS
