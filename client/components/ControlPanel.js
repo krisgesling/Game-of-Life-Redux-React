@@ -1,38 +1,37 @@
 import React from 'react';
 
 const ControlPanel = React.createClass({
-  clickHandler(action) {
-    console.log('clickHandler: '+action);
-    switch (action) {
-      case 'play':
-        // const gameTurn = this.props.gameTurn.bind(null, this.props.tiles);
-        let play = setTimeout(this.props.gameTurn.bind(null, this.props.tiles, this.props.lives), 0);
-        break;
-      case 'pause':
-        clearTimeout(play);
-        break;
-    }
-  },
   clickPlay(action) {
+    var play;
+    // play not persistent over function calls. Closure not working.
+    // React calls each function on load, so it's actually creating two separate closures.
+    // would it be different if it was a single btn calling the function and passing a variable into it?
+    // Return to state machine model!!! Have play/pause in state and check state after each turn.
+
+    // try this first - https://github.com/reactjs/redux/issues/1194
+    // or this - http://jaysoo.ca/2016/01/03/managing-processes-in-redux-using-sagas/
     var ctrlFn = function() {
-      // console showing props undefined, play variable referring to wrong this.
-      // need to pass this of parent through or bind the Fn to the right call location.
       console.log('ctrlFn');
-      if (action == 'play') {
-        console.log('action: play');
-        let play = setInterval(() => {
-          this.props.gameTurn(this.props.tiles, this.props.lives)
-        }, 1000);
-      } else if ( action == 'pause' ) {
-        console.log('action: pause');
-        clearInterval(play);
+      switch (action) {
+        case 'play':
+          console.log('action: play');
+          play = setInterval(() => {
+            this.props.gameTurn(this.props.tiles, this.props.lives)
+          }, 500);
+          console.log(play);
+          break;
+        case 'pause':
+          console.log('action: pause');
+          console.log(play);
+          clearInterval(play);
+          break;
       }
     }
-    var self = ctrlFn.call(this);
-    return self;
+    return ctrlFn.call(this);
   },
   render() {
     return (
+
       <div className="control-panel">
         <button className="take-turn" onClick={this.clickPlay.bind(this, 'play')}>Play</button>
         <button className="take-turn" onClick={this.clickPlay.bind(this, 'pause')}>Pause</button>
