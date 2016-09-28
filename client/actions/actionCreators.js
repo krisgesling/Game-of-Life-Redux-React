@@ -36,10 +36,15 @@ export function gameTurn(tiles, lives) {
 }
 
 // Btn handling for game control
-export function gameControl(props, btn) {
+export function play() {
   return {
-    type: 'GAME_CONTROL',
-    props,
-    btn
+    type: 'PLAY'
   }
 }
+
+export function pause() {
+  return {
+    type: 'PAUSE'
+  }
+}
+

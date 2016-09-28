@@ -4,8 +4,7 @@
 / get interface updating from state
 / repeat for x number of 'turns' - setInterval
 / add turn counter
-- allow start and stop of game
--- should the state of the game be in state? Play, pause,
+/ allow start and stop of game
 
 
 // BUG FIXES

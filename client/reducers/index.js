@@ -4,9 +4,9 @@ import { routerReducer } from 'react-router-redux';
 
 import lives from './lives';
 import tiles from './tiles';
-//import gameTurn from './turn';
+import control from './control';
 
 
-const rootReducer = combineReducers({lives, tiles, routing: routerReducer});
+const rootReducer = combineReducers({lives, tiles, control, routing: routerReducer});
 
 export default rootReducer;

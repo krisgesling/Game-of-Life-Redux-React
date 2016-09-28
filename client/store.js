@@ -7,11 +7,13 @@ import rootReducer from './reducers/index';
 
 import lives from './data/lives';
 import tiles from './data/tiles';
+import control from './data/control';
 
 // Create an object for the default data
 const defaultState = {
   lives,
-  tiles
+  tiles,
+  control
 }
 
 
