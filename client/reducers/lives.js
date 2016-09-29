@@ -5,17 +5,17 @@
 
 function lives(state = [], action) {
   switch(action.type) {
-    case 'TILE_BORN':
-      const i = action.index;
-      return [
-        ...state.slice(0,i),
-        {...state[i], likes: state[i].likes + 1},
-        ...state.slice(i+1),
-      ]
+
+    case 'GENERATE_TILE_ARRAY':
+      state = action.lives;
+      state.turns = 0;
+      return state;
+
     case 'GAME_TURN':
-      let retState = action.lives;
-      retState.turns++;
-      return (retState);
+      state = action.lives;
+      state.turns++;
+      return state;
+
     default:
       return state;
   }

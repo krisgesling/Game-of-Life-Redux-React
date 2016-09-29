@@ -1,5 +1,5 @@
 const lives = {
-  "cols": 80,
+  "cols": 90,
   "rows": 30,
   "turns": 0
 };

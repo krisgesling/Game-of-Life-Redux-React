@@ -26,6 +26,13 @@ export function removeComment(postId,i) {
 }
 
 //**** GoL actions ****//
+// Generate random tile array
+export function generateTileArray(lives) {
+  return {
+    type: 'GENERATE_TILE_ARRAY',
+    lives
+  }
+}
 // Game turn
 export function gameTurn(tiles, lives) {
   return {

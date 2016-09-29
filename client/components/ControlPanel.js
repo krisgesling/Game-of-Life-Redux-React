@@ -23,6 +23,7 @@ const ControlPanel = React.createClass({
         <button className="take-turn" onClick={this.props.pause.bind(null)}>Pause</button>
         <button className="take-turn" onClick={this.props.faster.bind(null)}>Faster</button>
         <button className="take-turn" onClick={this.props.slower.bind(null)}>Slower</button>
+        <button className="take-turn" onClick={this.props.generateTileArray.bind(null, this.props.lives)}>Randomise</button>
         <button>{this.props.lives.turns}</button>
       </div>
     )

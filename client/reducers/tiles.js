@@ -1,9 +1,17 @@
-function gameTurn(state = [], action) {
+function tileReducers(state = [], action) {
   switch(action.type) {
 
-    case 'GAME_CONTROL':
-
-      return state;
+    case 'GENERATE_TILE_ARRAY':
+      // Generate tiles based on rows and cols then replace tileArray in state
+      let tileArray = [];
+      for (let i=0; i<action.lives.rows; i++) {
+        tileArray.push([]);
+        for (let j=0; j<action.lives.cols; j++) {
+          tileArray[i].push(j);
+          tileArray[i][j] = Math.floor(Math.random() * 2);
+        }
+      }
+      return (tileArray);
 
     case 'GAME_TURN':
       var findNeighbours = function() {
@@ -31,7 +39,7 @@ function gameTurn(state = [], action) {
       var checkLife = function(alive, neighbourCount) {
       // Takes binary of whether a tile is alive, and number of neighbours
       // returns whether that tile will be alive at the end of the turn.
-        if (typeof(alive) == 'undefined' || typeof(neighbourCount) == 'undefined' ) {
+        if (typeof(alive) == 'undefined' || typeof(neighbourCount) == 'undefined') {
           throw new SyntaxError('One or more required parameters were undefined');
         } else if ( !(alive >= 0 && alive <= 1) ) {
           throw new TypeError('Invalid life binary: '+alive);
@@ -61,4 +69,5 @@ function gameTurn(state = [], action) {
   }
 }
 
-export default gameTurn;
+
+export default tileReducers;
