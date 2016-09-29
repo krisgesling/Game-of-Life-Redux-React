@@ -1,9 +1,29 @@
-function control(state = [], action) {
+function control(state = {}, action) {
+  const changeRate = 200;
+  let newInterval;
   switch(action.type) {
     case 'PLAY':
-      return ['play']
+      return {
+        playState: 'play',
+        turnInterval: state.turnInterval
+      }
     case 'PAUSE':
-      return ['pause']
+      return {
+        playState: 'pause',
+        turnInterval: state.turnInterval
+      }
+    case 'FASTER':
+      newInterval = state.turnInterval > changeRate ? state.turnInterval - changeRate : state.turnInterval;
+      return {
+        playState: state.playState,
+        turnInterval: newInterval
+      }
+    case 'SLOWER':
+      newInterval = Number(state.turnInterval) + changeRate;
+      return {
+        playState: state.playState,
+        turnInterval: newInterval
+      }
     default:
       return state;
   }

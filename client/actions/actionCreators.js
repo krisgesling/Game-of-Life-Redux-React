@@ -48,3 +48,15 @@ export function pause() {
   }
 }
 
+export function faster() {
+  return {
+    type: 'FASTER'
+  }
+}
+
+export function slower() {
+  return {
+    type: 'SLOWER'
+  }
+}
+
