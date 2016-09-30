@@ -14,28 +14,7 @@ function tileReducers(state = [], action) {
       return (tileArray);
 
     case 'GAME_TURN':
-      var findNeighbours = function() {
-      // Maps all tiles on board and counts number of alive neighbours
-      // returns new lives Array by calling checkLife on each tile
-      let nextTurnTiles = [];
-        action.tiles.map(function (row,i) {
-          nextTurnTiles.push([]);
-          row.map( function (tile,j) {
-            let neighbourCount = 0;
-            for (let k=i-1; k<=i+1; k++) {
-              if (action.tiles[k]) {
-                for (let l=j-1; l<=j+1; l++) {
-                  if (action.tiles[k][l] && !(k === i && l === j)) {
-                    neighbourCount += action.tiles[k][l];
-                  }
-                }
-              }
-            }
-            nextTurnTiles[i].push(checkLife(tile,neighbourCount));
-          });
-        });
-        return(nextTurnTiles);
-      }
+
       var checkLife = function(alive, neighbourCount) {
       // Takes binary of whether a tile is alive, and number of neighbours
       // returns whether that tile will be alive at the end of the turn.
@@ -62,7 +41,27 @@ function tileReducers(state = [], action) {
         return nowAlive;
       };
 
-      return (findNeighbours())
+      // Maps all tiles on board and counts number of alive neighbours
+      // returns new lives Array by calling checkLife on each tile
+      let nextTurnTiles = [];
+      action.tiles.map(function (row,i) {
+        nextTurnTiles.push([]);
+        row.map( function (tile,j) {
+          let neighbourCount = 0;
+          for (let k=i-1; k<=i+1; k++) {
+            if (action.tiles[k]) {
+              for (let l=j-1; l<=j+1; l++) {
+                if (action.tiles[k][l] && !(k === i && l === j)) {
+                  neighbourCount += action.tiles[k][l];
+                }
+              }
+            }
+          }
+          nextTurnTiles[i].push(checkLife(tile,neighbourCount));
+        });
+      });
+
+      return (nextTurnTiles)
 
     default:
       return state;
