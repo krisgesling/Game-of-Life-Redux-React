@@ -5,21 +5,22 @@
 / repeat for x number of 'turns' - setInterval
 / add turn counter
 / allow start and stop of game
+- add display controls
 
 
 // BUG FIXES
 - rewrite life checking to check life of each tile once and increment each neighbour of an alive tile.
 -- potentially do more grunt work at the start while it loads to make future operations quicker.
 -- consider calculating next turn at conclusion of last turn, so that calculations are done whilst the last turn is rendering.
-- Fix stretched squares in last row and col
-- Fix CSS bollocks
-- Clean up random number generater in GameBoard.js
-- Remove all Reduxtagram crap
+/ Fix stretched squares in last row and col
+/ Fix CSS bollocks
+/ Clean up random number generater in GameBoard.js
+/ Remove all Reduxtagram stuff
 
 
 // STRETCH FUNCTIONS
 - Choose number of turns the game will run for.
-- calculate starting dimensions based on screen size.
+/ calculate starting dimensions based on screen size.
 - user can toggle life of individual tiles
 - add 'game over' if tiles reach equilibrium
 
@@ -27,3 +28,6 @@
 // LEARNINGS
 - good functional coding techniques, encouraging the separation of code into the most fundamental blocks possible.
 - Real consideration of the collective impact of each micro operation. Changing the way we check for life can reduce the computations by at least half, and the cost of different types of computation start to become very important.
+- return to state machine concept so critical. Mapping the flow of state rather than jumping to which methods you want to use.
+- state changes belong in reducers! All reducers must be pure.
+
