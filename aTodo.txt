@@ -21,6 +21,7 @@
 - Choose number of turns the game will run for.
 - calculate starting dimensions based on screen size.
 - user can toggle life of individual tiles
+- add 'game over' if tiles reach equilibrium
 
 
 // LEARNINGS
