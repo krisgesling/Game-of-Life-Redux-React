@@ -2,9 +2,19 @@ import React from 'react';
 
 const ControlPanel = React.createClass({
   pressPlay() {
-    this.props.play()
-    this.props.gameTurn(this.props.tiles, this.props.lives);
-    this.ctrlFn();
+    if (this.props.control.playState === 'pause') {
+      // set playState
+      this.props.play()
+      // trigger at least single turn
+      this.props.gameTurn(this.props.tiles, this.props.lives);
+      // setTimeout to continue turns
+      setTimeout(() => {
+        if(this.props.control.playState === 'play') {
+          this.props.gameTurn(this.props.tiles, this.props.lives);
+          this.ctrlFn();
+        }
+      }, this.props.control.turnInterval);
+    }
   },
   ctrlFn() {
     setTimeout(() => {
@@ -18,12 +28,12 @@ const ControlPanel = React.createClass({
     return (
 
       <div className="control-panel">
-        <button className="take-turn" onClick={this.pressPlay}>Play</button>
-        <button className="take-turn" onClick={this.props.pause.bind(null)}>Pause</button>
-        <button className="take-turn" onClick={this.props.faster.bind(null)}>Faster</button>
-        <button className="take-turn" onClick={this.props.slower.bind(null)}>Slower</button>
-        <button className="take-turn" onClick={this.props.generateTileArray.bind(null, this.props.lives)}>Randomise</button>
-        <button>{this.props.lives.turns}</button>
+        <button onClick={this.pressPlay}>Play</button>
+        <button onClick={this.props.pause.bind(null)}>Pause</button>
+        <button onClick={this.props.faster.bind(null)}>Faster</button>
+        <button onClick={this.props.slower.bind(null)}>Slower</button>
+        <button onClick={this.props.generateTileArray.bind(null, this.props.lives)}>Randomise</button>
+        <div className="button">Life cycles: {this.props.lives.turns}</div>
       </div>
     )
   }

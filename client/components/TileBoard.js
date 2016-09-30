@@ -18,7 +18,8 @@ const TileBoard = React.createClass({
 
     const uniqueKey = i + '' + j;
     const deadOrAlive = this.props.tiles[i][j] ? 'alive' : 'dead';
-    const tileStyle = {width: tileSize, height: tileSize, padding: this.props.lives.padding};
+    const tilePadding = this.props.lives.padding ? '1px' : '0px';
+    const tileStyle = {width: tileSize, height: tileSize, padding: tilePadding};
     return (
       <Tile life={deadOrAlive} key={uniqueKey} y={i} x={j} style={tileStyle} tile={tile} />
     )

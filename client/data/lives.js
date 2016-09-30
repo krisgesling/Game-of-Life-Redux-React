@@ -1,7 +1,7 @@
 const lives = {
   "cols": 90,
   "rows": 30,
-  "padding": '1px',
+  "padding": true,
   "turns": 0
 };
 
