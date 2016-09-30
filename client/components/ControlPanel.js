@@ -7,13 +7,8 @@ const ControlPanel = React.createClass({
       this.props.play()
       // trigger at least single turn
       this.props.gameTurn(this.props.tiles, this.props.lives);
-      // setTimeout to continue turns
-      setTimeout(() => {
-        if(this.props.control.playState === 'play') {
-          this.props.gameTurn(this.props.tiles, this.props.lives);
-          this.ctrlFn();
-        }
-      }, this.props.control.turnInterval);
+      // call recursive setTimeout function to continue turns
+      this.ctrlFn();
     }
   },
   ctrlFn() {
