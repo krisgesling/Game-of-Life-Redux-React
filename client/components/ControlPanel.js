@@ -21,14 +21,19 @@ const ControlPanel = React.createClass({
   },
   render() {
     return (
-
       <div className="control-panel">
-        <button onClick={this.pressPlay}>Play</button>
-        <button onClick={this.props.pause.bind(null)}>Pause</button>
-        <button onClick={this.props.faster.bind(null)}>Faster</button>
-        <button onClick={this.props.slower.bind(null)}>Slower</button>
-        <button onClick={this.props.generateTileArray.bind(null, this.props.lives)}>Randomise</button>
-        <div className="button">Life cycles: {this.props.lives.turns}</div>
+        <button onClick={this.pressPlay}>
+          Play
+        </button>
+        <button onClick={this.props.pause.bind(null)}>
+          Pause
+        </button>
+        <button onClick={this.props.generateTileArray.bind(null, this.props.lives)}>
+          Randomise
+        </button>
+        <div className="button">
+          Life cycles: {this.props.lives.turns}
+        </div>
       </div>
     )
   }

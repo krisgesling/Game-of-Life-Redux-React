@@ -18,11 +18,11 @@ body
 button, .button
   border 2px solid lighten(grey, 90%)
   background none
-  flex-basis 15%
+  flex-basis 20%
   display inline-block
-  line-height 2
+  line-height 1.2
   text-decoration none
-  padding 5px
+  padding 15px
   text-align center
   color blue
   transition all 0.2s
@@ -33,13 +33,16 @@ button
     outline 0
 
 .tile-board
-  background #ccc
   width 100%
   margin auto
   font-size 0px
 
+.row
+  margin auto
+
 .tile
   display: inline-block
+  background #ccc
 
 .game-tile-inner
   width 100%
@@ -51,7 +54,16 @@ button
 .alive .game-tile-inner
   background red
 
-h1
-  font-size 4em
-
-
+.display-control
+  display flex
+  flex-direction column
+  flex-wrap wrap
+  >div
+    margin-left auto
+  input
+    width 2em
+    height 1em
+    margin 0 0.4em
+    border none
+    background transparent
+    text-align center

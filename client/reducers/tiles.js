@@ -61,7 +61,7 @@ function tileReducers(state = [], action) {
         });
       });
 
-      return (nextTurnTiles)
+      return (nextTurnTiles);
 
     default:
       return state;
