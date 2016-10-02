@@ -3,15 +3,21 @@ import Tile from './Tile';
 
 const TileBoard = React.createClass({
   tileSizer() {
-    let widthSize = Math.floor(window.innerWidth * 0.8 / this.props.lives.cols);
-    let heightSize = Math.floor(window.innerHeight * 0.6 / this.props.lives.rows);
-    let size = widthSize < heightSize ? widthSize : heightSize;
-    size += 'px';
+    let width = Math.floor(window.innerWidth * 0.8 / this.props.lives.cols);
+    let height = Math.floor(window.innerHeight * 0.6 / this.props.lives.rows);
+    let size = width < height ? width : height;
     return size;
   },
   renderRow(row, i) {
     return (
-      <div className="row" key={i} style={{height:this.tileSizer()}}>
+      <div
+        className="row"
+        key={i}
+        style={{
+          height:this.tileSizer() + 'px',
+          width: this.tileSizer() * this.props.lives.cols + 'px'
+        }}
+      >
         { row.map((tile,j) =>
           this.renderTile(tile,i,j)
         ) }
@@ -26,8 +32,8 @@ const TileBoard = React.createClass({
         y={i}
         x={j}
         style={{
-          width: this.tileSizer(),
-          height: this.tileSizer(),
+          width: this.tileSizer() + 'px',
+          height: this.tileSizer() + 'px',
           padding: this.props.lives.padding ? '1px' : '0px'
         }}
         tile={tile}

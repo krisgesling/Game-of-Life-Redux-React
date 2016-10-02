@@ -7,9 +7,9 @@ const DisplayControl = React.createClass({
   },
 
   generateGrid() {
-    let innerFn = function(cb) {
+    let innerFn = function() {
       this.props.generateGrid();
-      setTimeout(() => this.props.generateTileArray(this.props.lives), 50);
+      this.props.generateTileArray(this.props.lives);
     }
     return innerFn.call(this)
   },

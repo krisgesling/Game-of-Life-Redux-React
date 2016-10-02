@@ -3,10 +3,12 @@ function tileReducers(state = [], action) {
 
     case 'GENERATE_TILE_ARRAY':
       // Generate tiles based on rows and cols then replace tileArray in state
+      let rows = action.lives.newrows ? action.lives.newrows : action.lives.rows;
+      let cols = action.lives.newcols ? action.lives.newcols : action.lives.cols;
       let tileArray = [];
-      for (let i=0; i<action.lives.rows; i++) {
+      for (let i=0; i<rows; i++) {
         tileArray.push([]);
-        for (let j=0; j<action.lives.cols; j++) {
+        for (let j=0; j<cols; j++) {
           tileArray[i].push(j);
           tileArray[i][j] = Math.floor(Math.random() * 2);
         }

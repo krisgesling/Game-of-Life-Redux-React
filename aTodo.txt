@@ -5,7 +5,7 @@
 / repeat for x number of 'turns' - setInterval
 / add turn counter
 / allow start and stop of game
-- add display controls
+/ add display controls
 
 
 // BUG FIXES
@@ -16,6 +16,7 @@
 / Fix CSS bollocks
 / Clean up random number generater in GameBoard.js
 / Remove all Reduxtagram stuff
+- fix display generation
 
 
 // STRETCH FUNCTIONS
