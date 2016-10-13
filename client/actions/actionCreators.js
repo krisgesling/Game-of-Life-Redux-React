@@ -1,10 +1,4 @@
-export function generateGrid() {
-  return {
-    type: 'GENERATE_GRID'
-  };
-}
-
-// Generate random tile array
+// Generate random tiles in array
 export function generateTileArray(lives) {
   return {
     type: 'GENERATE_TILE_ARRAY',
@@ -12,7 +6,7 @@ export function generateTileArray(lives) {
   };
 }
 
-// Game turn
+// Primary game turn
 export function gameTurn(tiles, lives) {
   return {
     type: 'GAME_TURN',
@@ -21,12 +15,19 @@ export function gameTurn(tiles, lives) {
   };
 }
 
-// Change number of columns
+// Change number of columns or rows in text input
 export function updateGrid(inputName, text) {
   return {
     type: 'UPDATE_GRID',
     inputName,
     text
+  };
+}
+
+// Generate new grid based on modified cols and rows
+export function generateGrid() {
+  return {
+    type: 'GENERATE_GRID'
   };
 }
 
